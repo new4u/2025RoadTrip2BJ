@@ -1,0 +1,125 @@
+{
+  "route_summary": {
+    "total_cities": 8,
+    "total_service_areas": 10,
+    "estimated_duration": "23:01:00",
+    "total_distance": "2300"
+  },
+  "rest_recommendations": [
+    {
+      "service_area": "万安服务区",
+      "arrival_time": "01:58:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal",
+      "special_notes": "测速区间内"
+    },
+    {
+      "service_area": "天柱山服务区",
+      "arrival_time": "07:47:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal",
+      "special_notes": null
+    },
+    {
+      "service_area": "辛集服务区",
+      "arrival_time": "11:52:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "low",
+      "special_notes": "人流量较小"
+    },
+    {
+      "service_area": "雄县停车区",
+      "arrival_time": "18:28:00",
+      "features": {
+        "charging": false,
+        "parking": true,
+        "rest_area": true,
+        "food": false
+      },
+      "traffic_level": "normal",
+      "special_notes": null
+    }
+  ],
+  "charging_areas": [
+    {
+      "name": "平安服务区",
+      "arrival_time": "21:33:00",
+      "traffic_level": "normal"
+    },
+    {
+      "name": "龙门服务区",
+      "arrival_time": "22:15:00",
+      "traffic_level": "high"
+    },
+    {
+      "name": "万安服务区",
+      "arrival_time": "01:58:00",
+      "traffic_level": "normal"
+    },
+    {
+      "name": "永修服务区",
+      "arrival_time": "05:21:00",
+      "traffic_level": "normal"
+    },
+    {
+      "name": "天柱山服务区",
+      "arrival_time": "07:47:00",
+      "traffic_level": "normal"
+    },
+    {
+      "name": "霍山服务区",
+      "arrival_time": "09:05:00",
+      "traffic_level": "medium"
+    },
+    {
+      "name": "辛集服务区",
+      "arrival_time": "11:52:00",
+      "traffic_level": "low"
+    },
+    {
+      "name": "东昌府服务区",
+      "arrival_time": "14:54:00",
+      "traffic_level": "normal"
+    },
+    {
+      "name": "牛驼服务区",
+      "arrival_time": "18:45:00",
+      "traffic_level": "normal"
+    }
+  ],
+  "traffic_analysis": {
+    "low": [
+      {
+        "name": "辛集服务区",
+        "arrival_time": "11:52:00"
+      }
+    ],
+    "medium": [
+      {
+        "name": "霍山服务区",
+        "arrival_time": "09:05:00"
+      }
+    ],
+    "high": [
+      {
+        "name": "龙门服务区",
+        "arrival_time": "22:15:00"
+      }
+    ]
+  }
+}

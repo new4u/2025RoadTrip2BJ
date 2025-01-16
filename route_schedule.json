@@ -1,0 +1,193 @@
+{
+  "trip_info": {
+    "start_location": "深圳幸福里",
+    "end_location": "北京安乐林二条",
+    "start_time": "2025-01-24 20:00:00",
+    "estimated_duration": "23:01:00",
+    "total_distance": "2300"
+  },
+  "cities": [
+    {
+      "name": "惠州市",
+      "arrival_time": "20:48:00",
+      "duration_from_start": "00:48:00"
+    },
+    {
+      "name": "赣州市",
+      "arrival_time": "23:11:00",
+      "duration_from_start": "03:11:00"
+    },
+    {
+      "name": "南昌市/红谷滩区",
+      "arrival_time": "04:30:00",
+      "duration_from_start": "08:30:00"
+    },
+    {
+      "name": "六安市",
+      "arrival_time": "08:40:00",
+      "duration_from_start": "12:40:00"
+    },
+    {
+      "name": "菏泽市",
+      "arrival_time": "12:44:00",
+      "duration_from_start": "16:44:00"
+    },
+    {
+      "name": "聊城市",
+      "arrival_time": "14:25:00",
+      "duration_from_start": "18:25:00"
+    },
+    {
+      "name": "廊坊市",
+      "arrival_time": "18:22:00",
+      "duration_from_start": "22:22:00"
+    },
+    {
+      "name": "北京市",
+      "arrival_time": "19:01:00",
+      "duration_from_start": "23:01:00"
+    }
+  ],
+  "service_areas": [
+    {
+      "name": "平安服务区",
+      "arrival_time": "21:33:00",
+      "duration_from_start": "01:33:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal"
+    },
+    {
+      "name": "龙门服务区",
+      "arrival_time": "22:15:00",
+      "duration_from_start": "02:15:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "high",
+      "special_notes": "测速区间内，人流量较大"
+    },
+    {
+      "name": "万安服务区",
+      "arrival_time": "01:58:00",
+      "duration_from_start": "05:58:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal",
+      "special_notes": "测速区间内"
+    },
+    {
+      "name": "永修服务区",
+      "arrival_time": "05:21:00",
+      "duration_from_start": "09:21:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal",
+      "special_notes": "测速区间内"
+    },
+    {
+      "name": "天柱山服务区",
+      "arrival_time": "07:47:00",
+      "duration_from_start": "11:47:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal"
+    },
+    {
+      "name": "霍山服务区",
+      "arrival_time": "09:05:00",
+      "duration_from_start": "13:05:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "medium",
+      "special_notes": "人流量适中"
+    },
+    {
+      "name": "辛集服务区",
+      "arrival_time": "11:52:00",
+      "duration_from_start": "15:52:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "low",
+      "special_notes": "人流量较小"
+    },
+    {
+      "name": "东昌府服务区",
+      "arrival_time": "14:54:00",
+      "duration_from_start": "18:54:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal"
+    },
+    {
+      "name": "雄县停车区",
+      "arrival_time": "18:28:00",
+      "duration_from_start": "22:28:00",
+      "features": {
+        "charging": false,
+        "parking": true,
+        "rest_area": true,
+        "food": false
+      },
+      "traffic_level": "normal"
+    },
+    {
+      "name": "牛驼服务区",
+      "arrival_time": "18:45:00",
+      "duration_from_start": "22:45:00",
+      "features": {
+        "charging": true,
+        "parking": true,
+        "rest_area": true,
+        "food": true
+      },
+      "traffic_level": "normal"
+    }
+  ],
+  "important_notes": {
+    "toll_free_period": {
+      "start": "2025-01-28 00:00:00",
+      "end": "2025-02-04 24:00:00",
+      "description": "7座及以下小型客车免费通行"
+    },
+    "facilities": [
+      "充电站",
+      "收费站",
+      "服务区",
+      "途经路",
+      "加油站",
+      "电子眼"
+    ]
+  }
+}

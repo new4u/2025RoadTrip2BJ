@@ -92,13 +92,16 @@
         // 路线坐标点
         const routePoints = [
             { name: "深圳幸福里", coords: [22.5431, 114.0579] },
-            { name: "观澜服务区", coords: [22.7104, 114.0379] },
-            { name: "韶关服务区", coords: [24.8008, 113.5937] },
-            { name: "赣州服务区", coords: [25.8452, 114.9342] },
-            { name: "长沙服务区", coords: [28.2278, 112.9388] },
-            { name: "信阳服务区", coords: [32.1264, 114.0916] },
-            { name: "驻马店服务区", coords: [32.9809, 114.0245] },
-            { name: "德州服务区", coords: [37.4513, 116.2922] },
+            { name: "平安服务区", coords: [23.1523, 114.3821] },
+            { name: "龙门服务区", coords: [23.7482, 114.2547] },
+            { name: "万安服务区", coords: [26.4568, 114.7856] },
+            { name: "永修服务区", coords: [29.0214, 115.8012] },
+            { name: "天柱山服务区", coords: [31.7526, 116.0234] },
+            { name: "霍山服务区", coords: [31.3956, 116.3321] },
+            { name: "辛集服务区", coords: [37.9425, 115.2178] },
+            { name: "东昌府服务区", coords: [36.4538, 115.9887] },
+            { name: "雄县停车区", coords: [38.9943, 116.1087] },
+            { name: "牛驼服务区", coords: [39.4521, 116.3254] },
             { name: "北京安乐林二条", coords: [39.9042, 116.4074] }
         ];
 
@@ -119,36 +122,95 @@
         map.fitBounds(routeLine.getBounds());
 
         // 加载行程数据
-        fetch('time_schedule.json')
+        fetch('route_schedule.json')
             .then(response => response.json())
             .then(data => {
                 const scheduleContent = document.getElementById('schedule-content');
-                data.schedule.detailed_schedule.forEach(day => {
-                    const dayDiv = document.createElement('div');
-                    dayDiv.className = 'day-schedule';
-                    dayDiv.innerHTML = `
-                        <h3>${day.day}</h3>
-                        ${day.segments.map(segment => `
-                            <div class="segment">
-                                <div class="time">${segment.start_time} - ${segment.end_time}</div>
-                                <div class="activity">${segment.activity}</div>
-                                ${segment.location ? `
-                                    <div class="service-area">
-                                        <strong>📍 ${segment.location}</strong>
-                                        ${segment.notes ? `
-                                            <div class="notes">
-                                                ${segment.notes.map(note => `• ${note}`).join('<br>')}
-                                            </div>
-                                        ` : ''}
+                
+                // 创建起点信息
+                const startDiv = document.createElement('div');
+                startDiv.className = 'day-schedule';
+                startDiv.innerHTML = `
+                    <h3>出发信息</h3>
+                    <div class="segment">
+                        <div class="time">${data.trip_info.start_time}</div>
+                        <div class="activity">从${data.trip_info.start_location}出发</div>
+                        <div class="notes">
+                            • 预计行程：${data.trip_info.estimated_duration}<br>
+                            • 总距离：${data.trip_info.total_distance}公里
+                        </div>
+                    </div>
+                `;
+                scheduleContent.appendChild(startDiv);
+
+                // 创建城市路线
+                const citiesDiv = document.createElement('div');
+                citiesDiv.className = 'day-schedule';
+                citiesDiv.innerHTML = `
+                    <h3>途经城市</h3>
+                    ${data.cities.map(city => `
+                        <div class="segment">
+                            <div class="time">${city.arrival_time}</div>
+                            <div class="activity">到达${city.name}</div>
+                            <div class="notes">• 行驶时间：${city.duration_from_start}</div>
+                        </div>
+                    `).join('')}
+                `;
+                scheduleContent.appendChild(citiesDiv);
+
+                // 创建服务区信息
+                const serviceAreasDiv = document.createElement('div');
+                serviceAreasDiv.className = 'day-schedule';
+                serviceAreasDiv.innerHTML = `
+                    <h3>服务区信息</h3>
+                    ${data.service_areas.map(area => `
+                        <div class="segment">
+                            <div class="time">${area.arrival_time}</div>
+                            <div class="activity">到达${area.name}</div>
+                            <div class="service-area">
+                                <div class="facilities">
+                                    ${area.features.charging ? '⚡ 充电设施' : ''}
+                                    ${area.features.parking ? '🅿️ 停车场' : ''}
+                                    ${area.features.rest_area ? '🛏️ 休息区' : ''}
+                                    ${area.features.food ? '🍽️ 餐饮' : ''}
+                                </div>
+                                ${area.traffic_level ? `
+                                    <div class="traffic-level">
+                                        🚗 人流量：${{'low': '较少', 'medium': '适中', 'high': '较多'}[area.traffic_level]}
                                     </div>
                                 ` : ''}
-                                ${segment.distance ? `<div>🚗 ${segment.distance}</div>` : ''}
-                                ${segment.route ? `<div>🛣️ ${segment.route}</div>` : ''}
+                                ${area.special_notes ? `
+                                    <div class="notes">
+                                        • ${area.special_notes}
+                                    </div>
+                                ` : ''}
                             </div>
-                        `).join('')}
-                    `;
-                    scheduleContent.appendChild(dayDiv);
-                });
+                        </div>
+                    `).join('')}
+                `;
+                scheduleContent.appendChild(serviceAreasDiv);
+
+                // 创建重要提醒
+                const notesDiv = document.createElement('div');
+                notesDiv.className = 'day-schedule';
+                notesDiv.innerHTML = `
+                    <h3>重要提醒</h3>
+                    <div class="segment">
+                        <div class="activity">高速免费时间</div>
+                        <div class="notes">
+                            • 开始：${data.important_notes.toll_free_period.start}<br>
+                            • 结束：${data.important_notes.toll_free_period.end}<br>
+                            • ${data.important_notes.toll_free_period.description}
+                        </div>
+                    </div>
+                    <div class="segment">
+                        <div class="activity">沿途设施</div>
+                        <div class="notes">
+                            ${data.important_notes.facilities.map(facility => `• ${facility}`).join('<br>')}
+                        </div>
+                    </div>
+                `;
+                scheduleContent.appendChild(notesDiv);
             })
             .catch(error => console.error('Error loading schedule:', error));
     </script>

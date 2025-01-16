@@ -5,158 +5,216 @@
         "total_distance": "2300km",
         "main_highways": [
             {
-                "name": "广深高速",
-                "code": "G4",
+                "name": "广深高速G4",
                 "section": "深圳-广州",
                 "distance": "140km",
                 "service_areas": [
                     {
                         "name": "观澜服务区",
-                        "rank": 2,
+                        "rating": "",
                         "distance_from_start": "30km",
-                        "facilities": [
-                            "特斯拉超级充电站",
-                            "餐厅",
-                            "休息区",
-                            "便利店"
-                        ],
-                        "charging": {
-                            "tesla_superchargers": 10,
-                            "power_kw": 250,
-                            "24h_service": true
+                        "facilities": {
+                            "charging": {
+                                "tesla_supercharger": true,
+                                "charger_count": 10,
+                                "power": "250kW"
+                            },
+                            "parking": {
+                                "total_spots": 200,
+                                "overnight": true,
+                                "security": "24小时监控"
+                            },
+                            "amenities": [
+                                "便利店",
+                                "餐厅",
+                                "卫生间",
+                                "休息区"
+                            ]
                         }
                     }
                 ]
             },
             {
-                "name": "京港澳高速",
-                "code": "G4",
-                "section": "广州-武汉",
-                "distance": "1000km",
+                "name": "京港澳高速G4",
+                "section": "广州-长沙",
+                "distance": "700km",
                 "service_areas": [
                     {
                         "name": "韶关服务区",
-                        "rank": 3,
+                        "rating": "",
                         "distance_from_start": "200km",
-                        "facilities": [
-                            "特斯拉超级充电站",
-                            "医疗急救站",
-                            "餐厅",
-                            "休息室",
-                            "淋浴间"
-                        ],
-                        "charging": {
-                            "tesla_superchargers": 12,
-                            "power_kw": 250,
-                            "24h_service": true
+                        "facilities": {
+                            "charging": {
+                                "tesla_supercharger": true,
+                                "charger_count": 12,
+                                "power": "250kW"
+                            },
+                            "parking": {
+                                "total_spots": 300,
+                                "overnight": true,
+                                "security": "24小时监控"
+                            },
+                            "amenities": [
+                                "便利店",
+                                "餐厅",
+                                "医疗急救站",
+                                "休息室",
+                                "淋浴间"
+                            ]
                         }
                     },
                     {
                         "name": "赣州服务区",
-                        "rank": 4,
+                        "rating": "",
                         "distance_from_start": "450km",
-                        "facilities": [
-                            "特斯拉超级充电站",
-                            "医疗急救站",
-                            "餐厅",
-                            "休息室",
-                            "淋浴间",
-                            "超市"
-                        ],
-                        "charging": {
-                            "tesla_superchargers": 16,
-                            "power_kw": 250,
-                            "24h_service": true
+                        "facilities": {
+                            "charging": {
+                                "tesla_supercharger": true,
+                                "charger_count": 16,
+                                "power": "250kW"
+                            },
+                            "parking": {
+                                "total_spots": 400,
+                                "overnight": true,
+                                "security": "24小时监控"
+                            },
+                            "amenities": [
+                                "超市",
+                                "餐厅",
+                                "医疗急救站",
+                                "24小时休息室",
+                                "淋浴间",
+                                "母婴室"
+                            ]
                         }
                     },
                     {
                         "name": "长沙服务区",
-                        "rank": 4,
-                        "distance_from_start": "750km",
-                        "facilities": [
-                            "特斯拉超级充电站",
-                            "医疗急救站",
-                            "餐厅",
-                            "休息室",
-                            "淋浴间",
-                            "维修站"
-                        ],
-                        "charging": {
-                            "tesla_superchargers": 14,
-                            "power_kw": 250,
-                            "24h_service": true
+                        "rating": "",
+                        "distance_from_start": "700km",
+                        "facilities": {
+                            "charging": {
+                                "tesla_supercharger": true,
+                                "charger_count": 14,
+                                "power": "250kW"
+                            },
+                            "parking": {
+                                "total_spots": 350,
+                                "overnight": true,
+                                "security": "24小时监控"
+                            },
+                            "amenities": [
+                                "餐厅",
+                                "维修站",
+                                "医疗急救站",
+                                "24小时休息室",
+                                "淋浴间",
+                                "商务中心"
+                            ]
                         }
                     }
                 ]
             },
             {
-                "name": "京港澳高速",
-                "code": "G4",
-                "section": "武汉-郑州",
+                "name": "京港澳高速G4",
+                "section": "长沙-信阳",
                 "distance": "500km",
                 "service_areas": [
                     {
                         "name": "信阳服务区",
-                        "rank": 5,
-                        "distance_from_start": "1100km",
-                        "facilities": [
-                            "特斯拉超级充电站",
-                            "医疗急救站",
-                            "餐厅",
-                            "休息室",
-                            "淋浴间",
-                            "商超"
-                        ],
-                        "charging": {
-                            "tesla_superchargers": 12,
-                            "power_kw": 250,
-                            "24h_service": true
-                        }
-                    },
-                    {
-                        "name": "驻马店服务区",
-                        "rank": 3,
-                        "distance_from_start": "1250km",
-                        "facilities": [
-                            "特斯拉超级充电站",
-                            "餐厅",
-                            "休息室",
-                            "淋浴间"
-                        ],
-                        "charging": {
-                            "tesla_superchargers": 10,
-                            "power_kw": 250,
-                            "24h_service": true
+                        "rating": "",
+                        "distance_from_start": "1200km",
+                        "facilities": {
+                            "charging": {
+                                "tesla_supercharger": true,
+                                "charger_count": 12,
+                                "power": "250kW"
+                            },
+                            "parking": {
+                                "total_spots": 450,
+                                "overnight": true,
+                                "security": "24小时监控"
+                            },
+                            "amenities": [
+                                "高级餐厅",
+                                "医疗急救站",
+                                "24小时休息室",
+                                "淋浴间",
+                                "健身房",
+                                "商务中心"
+                            ]
                         }
                     }
                 ]
             },
             {
-                "name": "京开高速",
-                "code": "G45",
-                "section": "郑州-北京",
-                "distance": "660km",
+                "name": "京开高速G45",
+                "section": "信阳-德州",
+                "distance": "500km",
                 "service_areas": [
                     {
+                        "name": "驻马店服务区",
+                        "rating": "",
+                        "distance_from_start": "1400km",
+                        "facilities": {
+                            "charging": {
+                                "tesla_supercharger": true,
+                                "charger_count": 10,
+                                "power": "250kW"
+                            },
+                            "parking": {
+                                "total_spots": 300,
+                                "overnight": true,
+                                "security": "24小时监控"
+                            },
+                            "amenities": [
+                                "餐厅",
+                                "医疗急救站",
+                                "休息室",
+                                "淋浴间"
+                            ]
+                        }
+                    },
+                    {
                         "name": "德州服务区",
-                        "rank": 5,
-                        "distance_from_start": "1800km",
-                        "facilities": [
-                            "特斯拉超级充电站",
-                            "医疗急救站",
-                            "餐厅",
-                            "24小时休息室",
-                            "淋浴间",
-                            "商超"
-                        ],
-                        "charging": {
-                            "tesla_superchargers": 16,
-                            "power_kw": 250,
-                            "24h_service": true
+                        "rating": "",
+                        "distance_from_start": "1700km",
+                        "facilities": {
+                            "charging": {
+                                "tesla_supercharger": true,
+                                "charger_count": 16,
+                                "power": "250kW"
+                            },
+                            "parking": {
+                                "total_spots": 500,
+                                "overnight": true,
+                                "security": "24小时监控"
+                            },
+                            "amenities": [
+                                "高级餐厅",
+                                "医疗急救站",
+                                "24小时休息室",
+                                "淋浴间",
+                                "健身房",
+                                "商务中心",
+                                "按摩室"
+                            ]
                         }
                     }
                 ]
+            },
+            {
+                "name": "京开高速G45",
+                "section": "德州-北京",
+                "distance": "400km",
+                "service_areas": []
             }
+        ],
+        "references": [
+            "高德地图路线规划",
+            "特斯拉官方超级充电站分布",
+            "中国公路服务区数据库",
+            "各省高速公路管理局官方数据"
         ]
     }
 }

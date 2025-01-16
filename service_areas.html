@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳到北京高速服务区信息</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .card {
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            border-bottom: none;
+            padding: 15px 20px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .badge {
+            font-size: 0.9em;
+            padding: 6px 10px;
+            margin-right: 5px;
+        }
+        .chart-container {
+            height: 400px;
+            margin: 20px 0;
+        }
+        .facility-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+        }
+        .peak-hours {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        .special-notes {
+            color: #0d6efd;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4">深圳到北京高速服务区信息</h1>
+        
+        <!-- 数据概览 -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">服务区总数</h5>
+                        <p class="card-text" id="totalCount">-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">平均评分</h5>
+                        <p class="card-text" id="avgRating">-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">特斯拉充电站</h5>
+                        <p class="card-text" id="teslaCount">-</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <h5 class="card-title">高评分(4星以上)</h5>
+                        <p class="card-text" id="highRatingCount">-</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 图表展示 -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">服务区评分分布</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="ratingChart" class="chart-container"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">充电设施分布</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="chargingChart" class="chart-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 服务区列表 -->
+        <div id="serviceAreas"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+    <script>
+        // 加载数据
+        fetch('service_areas_analysis.json')
+            .then(response => response.json())
+            .then(data => {
+                updateDashboard(data);
+                renderCharts(data);
+                renderServiceAreas(data);
+            })
+            .catch(error => console.error('Error loading data:', error));
+
+        // 更新数据概览
+        function updateDashboard(data) {
+            document.getElementById('totalCount').textContent = data.length;
+            
+            const avgRating = data.reduce((sum, area) => sum + area.popularity, 0) / data.length;
+            document.getElementById('avgRating').textContent = avgRating.toFixed(1);
+            
+            const teslaCount = data.filter(area => 
+                area.facilities.充电?.特斯拉超充 > 0
+            ).length;
+            document.getElementById('teslaCount').textContent = teslaCount;
+            
+            const highRatingCount = data.filter(area => area.popularity >= 4).length;
+            document.getElementById('highRatingCount').textContent = highRatingCount;
+        }
+
+        // 渲染图表
+        function renderCharts(data) {
+            // 评分分布图
+            const ratingChart = echarts.init(document.getElementById('ratingChart'));
+            const ratingData = Array(5).fill(0);
+            data.forEach(area => ratingData[area.popularity - 1]++);
+            
+            ratingChart.setOption({
+                tooltip: { trigger: 'axis' },
+                xAxis: {
+                    type: 'category',
+                    data: ['1星', '2星', '3星', '4星', '5星']
+                },
+                yAxis: { type: 'value' },
+                series: [{
+                    data: ratingData,
+                    type: 'bar',
+                    name: '服务区数量',
+                    itemStyle: {
+                        color: '#0d6efd'
+                    }
+                }]
+            });
+
+            // 充电设施分布图
+            const chargingChart = echarts.init(document.getElementById('chargingChart'));
+            const chargingData = data.map(area => ({
+                name: area.name,
+                tesla: area.facilities.充电?.特斯拉超充 || 0,
+                standard: area.facilities.充电?.国标快充 || 0
+            }));
+            
+            chargingChart.setOption({
+                tooltip: { trigger: 'axis' },
+                legend: {
+                    data: ['特斯拉超充', '国标快充']
+                },
+                xAxis: {
+                    type: 'category',
+                    data: chargingData.map(item => item.name),
+                    axisLabel: {
+                        rotate: 45
+                    }
+                },
+                yAxis: { type: 'value' },
+                series: [
+                    {
+                        name: '特斯拉超充',
+                        type: 'bar',
+                        stack: 'total',
+                        data: chargingData.map(item => item.tesla),
+                        itemStyle: { color: '#dc3545' }
+                    },
+                    {
+                        name: '国标快充',
+                        type: 'bar',
+                        stack: 'total',
+                        data: chargingData.map(item => item.standard),
+                        itemStyle: { color: '#198754' }
+                    }
+                ]
+            });
+        }
+
+        // 渲染服务区列表
+        function renderServiceAreas(data) {
+            const container = document.getElementById('serviceAreas');
+            
+            data.sort((a, b) => b.popularity - a.popularity)
+                .forEach(area => {
+                    const card = document.createElement('div');
+                    card.className = 'card mb-3';
+                    card.innerHTML = `
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">${area.name}</h5>
+                            <div>
+                                ${Array(area.popularity).fill('⭐').join('')}
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>位置：</strong>${area.location}</p>
+                                    <p><strong>所属高速：</strong>${area.highway}</p>
+                                    <p class="peak-hours"><strong>高峰时段：</strong>${area.peak_hours.join(', ')}</p>
+                                    ${area.special_notes ? 
+                                        `<p class="special-notes"><strong>特色：</strong>${area.special_notes}</p>` : 
+                                        ''}
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>设施信息</h6>
+                                    <div class="mb-2">
+                                        <span class="badge bg-primary">充电桩：特斯拉${area.facilities.充电.特斯拉超充}个，国标${area.facilities.充电.国标快充}个</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="badge bg-success">停车位：小车${area.facilities.停车.小车位}个，大车${area.facilities.停车.大车位}个</span>
+                                    </div>
+                                    <div class="mb-2">
+                                        <span class="badge bg-info">餐饮：${area.facilities.餐饮.join('、')}</span>
+                                    </div>
+                                    <div>
+                                        <span class="badge bg-warning text-dark">休息：${area.facilities.休息.join('、')}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+        }
+    </script>
+</body>
+</html>
