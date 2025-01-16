@@ -434,3 +434,59 @@
    - 添加人流量显示
    - 优化特别提醒
    - 完善设施信息
+
+## 时间戳：2025-01-16 17:06:49 CST
+
+### 问题描述
+Git操作报错：
+- Head sha can't be blank
+- Base sha can't be blank
+- No commits between main and master
+- Base ref must be a branch
+
+### 分析
+这些错误通常表明Git分支管理存在以下问题：
+1. 主分支（main/master）配置不正确
+2. 分支间没有提交记录
+3. 基础引用配置有误
+
+### 建议解决方案
+1. 确保本地仓库正确初始化
+2. 检查main和master分支的状态
+3. 确保有至少一次初始提交
+4. 验证分支引用的完整性
+
+## 时间戳：2025-01-16 17:06:49 CST - Git分支问题诊断
+
+### 当前状态检查
+- 目前位于master分支
+- 远程仓库只有origin/master分支
+- 没有main分支存在
+- 有未提交的更改（log.md文件）
+
+### 问题根源
+1. 仓库使用的是master作为默认分支，而某些操作可能期望使用main分支
+2. 缺少必要的初始提交或分支设置
+3. 远程仓库配置可能需要更新
+
+### 解决方案
+1. 创建并切换到main分支
+2. 确保所有更改已提交
+3. 设置正确的上游分支
+4. 更新远程仓库配置
+
+### 执行步骤
+```bash
+# 提交当前更改
+git add log.md
+git commit -m "更新日志"
+
+# 创建并切换到main分支
+git checkout -b main
+
+# 设置上游分支
+git push -u origin main
+
+# 可选：将main设为默认分支
+# 需要在Git托管平台（如GitHub）上进行设置
+```
