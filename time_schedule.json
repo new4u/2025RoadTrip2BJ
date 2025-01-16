@@ -1,0 +1,180 @@
+{
+    "schedule": {
+        "departure": {
+            "date": "2025-01-24",
+            "time": "20:00",
+            "location": "深圳幸福里"
+        },
+        "arrival": {
+            "date": "2025-01-28",
+            "time": "00:00",
+            "location": "北京安乐林二条"
+        },
+        "detailed_schedule": [
+            {
+                "day": "2025-01-24",
+                "segments": [
+                    {
+                        "start_time": "20:00",
+                        "end_time": "22:00",
+                        "activity": "驾驶",
+                        "distance": "150km",
+                        "route": "广深高速G4",
+                        "notes": ["观澜服务区可选择性休息，有10个特斯拉充电桩"]
+                    },
+                    {
+                        "start_time": "22:00",
+                        "end_time": "23:59",
+                        "activity": "驾驶",
+                        "distance": "170km",
+                        "route": "京港澳高速G4"
+                    }
+                ]
+            },
+            {
+                "day": "2025-01-25",
+                "segments": [
+                    {
+                        "start_time": "00:00",
+                        "end_time": "04:00",
+                        "activity": "休息和充电",
+                        "location": "韶关服务区",
+                        "notes": [
+                            "特斯拉超级充电站12个充电桩",
+                            "24小时安保服务",
+                            "便利店和淋浴设施",
+                            "300车位充足停车空间",
+                            "Model Y车内休息"
+                        ]
+                    },
+                    {
+                        "start_time": "04:00",
+                        "end_time": "10:00",
+                        "activity": "驾驶",
+                        "distance": "260km",
+                        "route": "京港澳高速G4"
+                    },
+                    {
+                        "start_time": "10:00",
+                        "end_time": "14:00",
+                        "activity": "休息和充电",
+                        "location": "赣州服务区",
+                        "notes": [
+                            "特斯拉超级充电站16个充电桩",
+                            "医疗急救站可用",
+                            "24小时休息室",
+                            "400车位充足停车空间",
+                            "Model Y车内休息"
+                        ]
+                    },
+                    {
+                        "start_time": "14:00",
+                        "end_time": "20:00",
+                        "activity": "驾驶",
+                        "distance": "270km",
+                        "route": "京港澳高速G4"
+                    },
+                    {
+                        "start_time": "20:00",
+                        "end_time": "23:59",
+                        "activity": "休息和充电",
+                        "location": "长沙服务区",
+                        "notes": [
+                            "特斯拉超级充电站14个充电桩",
+                            "24小时安保巡逻",
+                            "淋浴设施完善",
+                            "350车位安全停车",
+                            "Model Y车内休息"
+                        ]
+                    }
+                ]
+            },
+            {
+                "day": "2025-01-26",
+                "segments": [
+                    {
+                        "start_time": "08:00",
+                        "end_time": "14:00",
+                        "activity": "驾驶",
+                        "distance": "350km",
+                        "route": "京港澳高速G4"
+                    },
+                    {
+                        "start_time": "14:00",
+                        "end_time": "18:00",
+                        "activity": "休息和充电",
+                        "location": "信阳服务区",
+                        "notes": [
+                            "特斯拉超级充电站12个充电桩",
+                            "医疗急救站可用",
+                            "24小时休息室",
+                            "450车位充足空间",
+                            "Model Y车内休息"
+                        ]
+                    },
+                    {
+                        "start_time": "18:00",
+                        "end_time": "22:00",
+                        "activity": "驾驶",
+                        "distance": "150km",
+                        "route": "京港澳高速G4"
+                    },
+                    {
+                        "start_time": "22:00",
+                        "end_time": "23:59",
+                        "activity": "休息和充电",
+                        "location": "驻马店服务区",
+                        "notes": [
+                            "特斯拉超级充电站10个充电桩",
+                            "24小时监控",
+                            "300车位安全停车",
+                            "Model Y车内休息"
+                        ]
+                    }
+                ]
+            },
+            {
+                "day": "2025-01-27",
+                "segments": [
+                    {
+                        "start_time": "08:00",
+                        "end_time": "16:00",
+                        "activity": "驾驶",
+                        "distance": "400km",
+                        "route": "京开高速G45"
+                    },
+                    {
+                        "start_time": "16:00",
+                        "end_time": "23:59",
+                        "activity": "休息和充电",
+                        "location": "德州服务区",
+                        "notes": [
+                            "特斯拉超级充电站16个充电桩",
+                            "医疗急救站可用",
+                            "24小时休息室",
+                            "500车位充足空间",
+                            "Model Y车内休息",
+                            "为28日0点免费通行做准备"
+                        ]
+                    }
+                ]
+            },
+            {
+                "day": "2025-01-28",
+                "segments": [
+                    {
+                        "start_time": "00:00",
+                        "end_time": "02:00",
+                        "activity": "进入北京",
+                        "notes": [
+                            "利用高速免费时段进京",
+                            "最后100km路程",
+                            "凌晨道路通畅"
+                        ],
+                        "route": "京开高速G45-北京市区"
+                    }
+                ]
+            }
+        ]
+    }
+}

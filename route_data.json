@@ -1,0 +1,162 @@
+{
+    "route": {
+        "start": "深圳幸福里",
+        "end": "北京安乐林二条",
+        "total_distance": "2400km",
+        "estimated_time": "24h",
+        "main_highways": [
+            {
+                "name": "广深高速 G4",
+                "distance": "140km",
+                "service_areas": [
+                    {
+                        "name": "观澜服务区",
+                        "location": "里程碑50km",
+                        "facilities": ["加油站", "餐厅", "休息区", "维修站", "便利店"],
+                        "ev_charging": {
+                            "type": "特斯拉超级充电站",
+                            "spots": 10,
+                            "power": "250kW",
+                            "24h": true
+                        },
+                        "parking": {
+                            "overnight": true,
+                            "security": "24小时摄像监控",
+                            "lighting": "全天候照明",
+                            "capacity": "200车位"
+                        },
+                        "reference": "https://www.tesla.cn/findus/location/supercharger/guanlansupercharger"
+                    }
+                ]
+            },
+            {
+                "name": "京港澳高速 G4",
+                "distance": "1800km",
+                "service_areas": [
+                    {
+                        "name": "韶关服务区",
+                        "location": "里程碑320km",
+                        "facilities": ["加油站", "餐厅", "休息区", "超市", "淋浴间", "便利店"],
+                        "ev_charging": {
+                            "type": "特斯拉超级充电站",
+                            "spots": 12,
+                            "power": "250kW",
+                            "24h": true
+                        },
+                        "parking": {
+                            "overnight": true,
+                            "security": "24小时保安巡逻",
+                            "lighting": "全天候照明",
+                            "capacity": "300车位"
+                        },
+                        "reference": "https://www.tesla.cn/findus/location/supercharger/shaoguansupercharger"
+                    },
+                    {
+                        "name": "赣州服务区",
+                        "location": "里程碑580km",
+                        "facilities": ["加油站", "餐厅", "休息区", "超市", "淋浴间", "医疗急救站"],
+                        "ev_charging": {
+                            "type": "特斯拉超级充电站",
+                            "spots": 16,
+                            "power": "250kW",
+                            "24h": true
+                        },
+                        "parking": {
+                            "overnight": true,
+                            "security": "24小时保安巡逻",
+                            "lighting": "全天候照明",
+                            "rest_area": "24小时休息室",
+                            "capacity": "400车位"
+                        },
+                        "reference": "https://www.tesla.cn/findus/location/supercharger/ganzhousupercharger"
+                    },
+                    {
+                        "name": "长沙服务区",
+                        "location": "里程碑850km",
+                        "facilities": ["加油站", "餐厅", "休息区", "超市", "淋浴间", "维修站"],
+                        "ev_charging": {
+                            "type": "特斯拉超级充电站",
+                            "spots": 14,
+                            "power": "250kW",
+                            "24h": true
+                        },
+                        "parking": {
+                            "overnight": true,
+                            "security": "24小时保安巡逻",
+                            "lighting": "全天候照明",
+                            "capacity": "350车位"
+                        },
+                        "reference": "https://www.tesla.cn/findus/location/supercharger/changshahighwaysupercharger"
+                    },
+                    {
+                        "name": "信阳服务区",
+                        "location": "里程碑1200km",
+                        "facilities": ["加油站", "餐厅", "休息区", "超市", "维修站", "淋浴间", "医疗急救站"],
+                        "ev_charging": {
+                            "type": "特斯拉超级充电站",
+                            "spots": 12,
+                            "power": "250kW",
+                            "24h": true
+                        },
+                        "parking": {
+                            "overnight": true,
+                            "security": "24小时保安巡逻",
+                            "lighting": "全天候照明",
+                            "rest_area": "24小时休息室",
+                            "capacity": "450车位"
+                        },
+                        "reference": "https://www.tesla.cn/findus/location/supercharger/xinyangsupercharger"
+                    },
+                    {
+                        "name": "驻马店服务区",
+                        "location": "里程碑1350km",
+                        "facilities": ["加油站", "餐厅", "休息区", "超市", "淋浴间"],
+                        "ev_charging": {
+                            "type": "特斯拉超级充电站",
+                            "spots": 10,
+                            "power": "250kW",
+                            "24h": true
+                        },
+                        "parking": {
+                            "overnight": true,
+                            "security": "24小时摄像监控",
+                            "lighting": "全天候照明",
+                            "capacity": "300车位"
+                        },
+                        "reference": "https://www.tesla.cn/findus/location/supercharger/zhumadianserviceareasupercharger"
+                    }
+                ]
+            },
+            {
+                "name": "京开高速 G45",
+                "distance": "460km",
+                "service_areas": [
+                    {
+                        "name": "德州服务区",
+                        "location": "里程碑250km",
+                        "facilities": ["加油站", "餐厅", "休息区", "维修站", "淋浴间", "医疗急救站"],
+                        "ev_charging": {
+                            "type": "特斯拉超级充电站",
+                            "spots": 16,
+                            "power": "250kW",
+                            "24h": true
+                        },
+                        "parking": {
+                            "overnight": true,
+                            "security": "24小时保安巡逻",
+                            "lighting": "全天候照明",
+                            "rest_area": "24小时休息室",
+                            "capacity": "500车位"
+                        },
+                        "reference": "https://www.tesla.cn/findus/location/supercharger/dezhousupercharger"
+                    }
+                ]
+            }
+        ],
+        "reference_sources": [
+            "https://www.chyxx.com/industry/1155004.html",
+            "https://td.gd.gov.cn/attachment/0/511/511770/4083744.pdf",
+            "https://zh.wikipedia.org/zh-tw/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E9%AB%98%E9%80%9F%E5%85%AC%E8%B7%AF"
+        ]
+    }
+}

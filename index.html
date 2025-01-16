@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳到北京自驾路线规划</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+        #map {
+            height: 600px;
+            flex: 2;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .schedule {
+            flex: 1;
+            padding: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .day-schedule {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .segment {
+            border-left: 3px solid #4CAF50;
+            margin: 10px 0;
+            padding-left: 10px;
+        }
+        .time {
+            color: #2196F3;
+            font-weight: bold;
+        }
+        .activity {
+            color: #333;
+            margin: 5px 0;
+        }
+        .notes {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+        .service-area {
+            background: #e3f2fd;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .tesla-info {
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <h1>深圳到北京自驾路线规划 (2025.1.24-28)</h1>
+    <div class="container">
+        <div id="map"></div>
+        <div class="schedule">
+            <h2>行程安排</h2>
+            <div id="schedule-content"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        // 地图初始化
+        const map = L.map('map').setView([34.5, 114], 5);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // 路线坐标点
+        const routePoints = [
+            { name: "深圳幸福里", coords: [22.5431, 114.0579] },
+            { name: "观澜服务区", coords: [22.7104, 114.0379] },
+            { name: "韶关服务区", coords: [24.8008, 113.5937] },
+            { name: "赣州服务区", coords: [25.8452, 114.9342] },
+            { name: "长沙服务区", coords: [28.2278, 112.9388] },
+            { name: "信阳服务区", coords: [32.1264, 114.0916] },
+            { name: "驻马店服务区", coords: [32.9809, 114.0245] },
+            { name: "德州服务区", coords: [37.4513, 116.2922] },
+            { name: "北京安乐林二条", coords: [39.9042, 116.4074] }
+        ];
+
+        // 绘制路线
+        const routeLine = L.polyline(routePoints.map(p => p.coords), {
+            color: '#2196F3',
+            weight: 3
+        }).addTo(map);
+
+        // 添加标记点
+        routePoints.forEach(point => {
+            L.marker(point.coords)
+                .bindPopup(point.name)
+                .addTo(map);
+        });
+
+        // 适应地图视图
+        map.fitBounds(routeLine.getBounds());
+
+        // 加载行程数据
+        fetch('time_schedule.json')
+            .then(response => response.json())
+            .then(data => {
+                const scheduleContent = document.getElementById('schedule-content');
+                data.schedule.detailed_schedule.forEach(day => {
+                    const dayDiv = document.createElement('div');
+                    dayDiv.className = 'day-schedule';
+                    dayDiv.innerHTML = `
+                        <h3>${day.day}</h3>
+                        ${day.segments.map(segment => `
+                            <div class="segment">
+                                <div class="time">${segment.start_time} - ${segment.end_time}</div>
+                                <div class="activity">${segment.activity}</div>
+                                ${segment.location ? `
+                                    <div class="service-area">
+                                        <strong>📍 ${segment.location}</strong>
+                                        ${segment.notes ? `
+                                            <div class="notes">
+                                                ${segment.notes.map(note => `• ${note}`).join('<br>')}
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                ` : ''}
+                                ${segment.distance ? `<div>🚗 ${segment.distance}</div>` : ''}
+                                ${segment.route ? `<div>🛣️ ${segment.route}</div>` : ''}
+                            </div>
+                        `).join('')}
+                    `;
+                    scheduleContent.appendChild(dayDiv);
+                });
+            })
+            .catch(error => console.error('Error loading schedule:', error));
+    </script>
+</body>
+</html>
