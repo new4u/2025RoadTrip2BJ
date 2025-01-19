@@ -69,150 +69,251 @@
         .tesla-info {
             color: #d32f2f;
         }
+        .warning {
+            color: #f44336;
+            font-weight: bold;
+        }
+        .rest-period {
+            background: #ffebee;
+            padding: 5px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
-    <h1>深圳到北京自驾路线规划 (2025.1.24-28)</h1>
+    <h1>深圳到北京自驾路线规划 (2025.1.25-28)</h1>
     <div class="container">
         <div id="map"></div>
         <div class="schedule">
             <h2>行程安排</h2>
-            <div id="schedule-content"></div>
+            
+            <div class="day-schedule">
+                <h3>第一天（1月25日）</h3>
+                <div class="segment">
+                    <div class="time">06:00</div>
+                    <div class="activity">从深圳幸福里出发</div>
+                    <div class="notes">
+                        • 地址：深圳市南山区沙河街道侨香路幸福里小区<br>
+                        • 建议提前15分钟到车库准备<br>
+                        • 检查车况和必要物品
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">08:15</div>
+                    <div class="activity">到达新丰服务区</div>
+                    <div class="notes">
+                        • 行驶距离：215公里（含市区路段）<br>
+                        • 建议车速：<br>
+                        &nbsp;&nbsp;- 市区：60-80km/h<br>
+                        &nbsp;&nbsp;- 高速：100-110km/h<br>
+                        • 早餐时间<br>
+                        • 充电价格：¥1.37/度<br>
+                        • 休息45分钟
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">11:30</div>
+                    <div class="activity">到达横市服务区</div>
+                    <div class="notes">
+                        • 行驶距离：246.72公里（总里程：461.72公里）<br>
+                        • 建议车速：100-110km/h<br>
+                        • 午餐（KFC available）<br>
+                        • 充电价格：¥1.43/度<br>
+                        • 休息60分钟
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">17:00</div>
+                    <div class="activity">到达燕厦服务区</div>
+                    <div class="notes">
+                        • 行驶距离：401.48公里（总里程：863.2公里）<br>
+                        • 建议车速：90-100km/h<br>
+                        • 晚餐和住宿<br>
+                        • 提供洗浴服务<br>
+                        • 充电价格：¥1.03-1.08/度（多品牌可选）<br>
+                        • 过夜休息
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <h3>第二天（1月26日）</h3>
+                <div class="segment">
+                    <div class="time">07:00</div>
+                    <div class="activity">从燕厦服务区出发</div>
+                    <div class="notes">
+                        • 休息充足<br>
+                        • 车辆充满电
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">10:30</div>
+                    <div class="activity">到达G45浠水服务区</div>
+                    <div class="notes">
+                        • 行驶距离：156.12公里（总里程：1019.32公里）<br>
+                        • 建议车速：90-100km/h<br>
+                        • 充电补给<br>
+                        • 充电价格：¥1.03/度<br>
+                        • 休息45分钟
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">16:00</div>
+                    <div class="activity">到达泗店服务区</div>
+                    <div class="notes">
+                        • 行驶距离：119.48公里（总里程：1138.8公里）<br>
+                        • 建议车速：90-100km/h<br>
+                        • 晚餐和住宿<br>
+                        • 提供洗浴服务<br>
+                        • 设施齐全<br>
+                        • 过夜休息
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <h3>第三天（1月27日）</h3>
+                <div class="segment">
+                    <div class="time">07:00</div>
+                    <div class="activity">从泗店服务区出发</div>
+                    <div class="notes">
+                        • 休息充足<br>
+                        • 准备长距离行驶
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">11:00</div>
+                    <div class="activity">到达周口东服务区</div>
+                    <div class="notes">
+                        • 行驶距离：243.65公里（总里程：1382.45公里）<br>
+                        • 建议车速：90-100km/h<br>
+                        • 午餐和充电<br>
+                        • 充电价格：¥1.40/度<br>
+                        • 休息60分钟
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">17:00</div>
+                    <div class="activity">到达衡水服务区</div>
+                    <div class="notes">
+                        • 行驶距离：509.55公里（总里程：1892公里）<br>
+                        • 建议车速：90-100km/h<br>
+                        • 五星级服务区<br>
+                        • 提供高品质洗浴和住宿<br>
+                        • 充电价格：¥1.20/度<br>
+                        • 过夜休息
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <h3>第四天（1月28日 除夕）</h3>
+                <div class="segment">
+                    <div class="time">08:30</div>
+                    <div class="activity">从衡水服务区出发</div>
+                    <div class="notes">
+                        • 休息充足<br>
+                        • 车辆充满电<br>
+                        • 为最后一段行程做准备
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="time">11:30</div>
+                    <div class="activity">抵达北京安乐林</div>
+                    <div class="notes">
+                        • 行驶距离：282公里（总里程：2174公里）<br>
+                        • 建议车速：80-90km/h（早高峰）<br>
+                        • 除夕到家
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-schedule">
+                <h3>重要提醒</h3>
+                <div class="segment">
+                    <div class="warning">休息时间安排</div>
+                    <div class="notes">
+                        • 夜间休息：22:00-06:00<br>
+                        • 午餐休息：11:30-14:00（90分钟）<br>
+                        • 早餐休息：30-45分钟<br>
+                        • 晚餐休息：60-90分钟
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="warning">充电策略</div>
+                    <div class="notes">
+                        • 优先使用低价充电站<br>
+                        • 配合休息时间充电<br>
+                        • 建议电量保持在20%-80%之间<br>
+                        • 提前准备各充电品牌APP
+                    </div>
+                </div>
+                <div class="segment">
+                    <div class="warning">车速建议</div>
+                    <div class="notes">
+                        • 白天建议：100-110km/h<br>
+                        • 夜间建议：90-100km/h<br>
+                        • 城市周边：80-90km/h<br>
+                        • 请根据实际路况和天气调整车速<br>
+                        • 雨雪天气建议降低20km/h
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
-        // 地图初始化
+        // 初始化地图
         const map = L.map('map').setView([34.5, 114], 5);
+        
+        // 添加OpenStreetMap图层
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // 路线坐标点
-        const routePoints = [
+        // 定义服务区坐标点
+        const servicePoints = [
             { name: "深圳幸福里", coords: [22.5431, 114.0579] },
-            { name: "平安服务区", coords: [23.1523, 114.3821] },
-            { name: "龙门服务区", coords: [23.7482, 114.2547] },
-            { name: "万安服务区", coords: [26.4568, 114.7856] },
-            { name: "永修服务区", coords: [29.0214, 115.8012] },
-            { name: "天柱山服务区", coords: [31.7526, 116.0234] },
-            { name: "霍山服务区", coords: [31.3956, 116.3321] },
-            { name: "辛集服务区", coords: [37.9425, 115.2178] },
-            { name: "东昌府服务区", coords: [36.4538, 115.9887] },
-            { name: "雄县停车区", coords: [38.9943, 116.1087] },
-            { name: "牛驼服务区", coords: [39.4521, 116.3254] },
-            { name: "北京安乐林二条", coords: [39.9042, 116.4074] }
+            { name: "新丰服务区", coords: [24.0695, 114.2067] },
+            { name: "横市服务区", coords: [25.6123, 114.3821] },
+            { name: "燕厦服务区", coords: [27.8234, 114.9821] },
+            { name: "G45浠水服务区", coords: [29.5932, 115.7892] },
+            { name: "泗店服务区", coords: [31.2789, 114.8976] },
+            { name: "周口东服务区", coords: [33.6298, 114.8765] },
+            { name: "衡水服务区", coords: [37.7382, 115.6702] },
+            { name: "北京安乐林", coords: [39.9042, 116.4074] }
         ];
 
-        // 绘制路线
-        const routeLine = L.polyline(routePoints.map(p => p.coords), {
+        // 定义路线坐标点（按顺序连接）
+        const routePoints = [
+            [22.5431, 114.0579], // 深圳幸福里
+            [24.0695, 114.2067], // 新丰服务区
+            [25.6123, 114.3821], // 横市服务区
+            [27.8234, 114.9821], // 燕厦服务区
+            [29.5932, 115.7892], // G45浠水服务区
+            [31.2789, 114.8976], // 泗店服务区
+            [33.6298, 114.8765], // 周口东服务区
+            [37.7382, 115.6702], // 衡水服务区
+            [39.9042, 116.4074]  // 北京安乐林
+        ];
+
+        // 创建路线
+        const routeLine = L.polyline(routePoints, {
             color: '#2196F3',
             weight: 3
         }).addTo(map);
 
         // 添加标记点
-        routePoints.forEach(point => {
+        servicePoints.forEach(point => {
             L.marker(point.coords)
                 .bindPopup(point.name)
                 .addTo(map);
         });
 
-        // 适应地图视图
+        // 调整地图视图以显示整个路线
         map.fitBounds(routeLine.getBounds());
-
-        // 加载行程数据
-        fetch('route_schedule.json')
-            .then(response => response.json())
-            .then(data => {
-                const scheduleContent = document.getElementById('schedule-content');
-                
-                // 创建起点信息
-                const startDiv = document.createElement('div');
-                startDiv.className = 'day-schedule';
-                startDiv.innerHTML = `
-                    <h3>出发信息</h3>
-                    <div class="segment">
-                        <div class="time">${data.trip_info.start_time}</div>
-                        <div class="activity">从${data.trip_info.start_location}出发</div>
-                        <div class="notes">
-                            • 预计行程：${data.trip_info.estimated_duration}<br>
-                            • 总距离：${data.trip_info.total_distance}公里
-                        </div>
-                    </div>
-                `;
-                scheduleContent.appendChild(startDiv);
-
-                // 创建城市路线
-                const citiesDiv = document.createElement('div');
-                citiesDiv.className = 'day-schedule';
-                citiesDiv.innerHTML = `
-                    <h3>途经城市</h3>
-                    ${data.cities.map(city => `
-                        <div class="segment">
-                            <div class="time">${city.arrival_time}</div>
-                            <div class="activity">到达${city.name}</div>
-                            <div class="notes">• 行驶时间：${city.duration_from_start}</div>
-                        </div>
-                    `).join('')}
-                `;
-                scheduleContent.appendChild(citiesDiv);
-
-                // 创建服务区信息
-                const serviceAreasDiv = document.createElement('div');
-                serviceAreasDiv.className = 'day-schedule';
-                serviceAreasDiv.innerHTML = `
-                    <h3>服务区信息</h3>
-                    ${data.service_areas.map(area => `
-                        <div class="segment">
-                            <div class="time">${area.arrival_time}</div>
-                            <div class="activity">到达${area.name}</div>
-                            <div class="service-area">
-                                <div class="facilities">
-                                    ${area.features.charging ? '⚡ 充电设施' : ''}
-                                    ${area.features.parking ? '🅿️ 停车场' : ''}
-                                    ${area.features.rest_area ? '🛏️ 休息区' : ''}
-                                    ${area.features.food ? '🍽️ 餐饮' : ''}
-                                </div>
-                                ${area.traffic_level ? `
-                                    <div class="traffic-level">
-                                        🚗 人流量：${{'low': '较少', 'medium': '适中', 'high': '较多'}[area.traffic_level]}
-                                    </div>
-                                ` : ''}
-                                ${area.special_notes ? `
-                                    <div class="notes">
-                                        • ${area.special_notes}
-                                    </div>
-                                ` : ''}
-                            </div>
-                        </div>
-                    `).join('')}
-                `;
-                scheduleContent.appendChild(serviceAreasDiv);
-
-                // 创建重要提醒
-                const notesDiv = document.createElement('div');
-                notesDiv.className = 'day-schedule';
-                notesDiv.innerHTML = `
-                    <h3>重要提醒</h3>
-                    <div class="segment">
-                        <div class="activity">高速免费时间</div>
-                        <div class="notes">
-                            • 开始：${data.important_notes.toll_free_period.start}<br>
-                            • 结束：${data.important_notes.toll_free_period.end}<br>
-                            • ${data.important_notes.toll_free_period.description}
-                        </div>
-                    </div>
-                    <div class="segment">
-                        <div class="activity">沿途设施</div>
-                        <div class="notes">
-                            ${data.important_notes.facilities.map(facility => `• ${facility}`).join('<br>')}
-                        </div>
-                    </div>
-                `;
-                scheduleContent.appendChild(notesDiv);
-            })
-            .catch(error => console.error('Error loading schedule:', error));
     </script>
 </body>
 </html>

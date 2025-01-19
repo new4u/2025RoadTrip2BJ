@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特斯拉车载直播</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .video-container {
+            flex: 1;
+            position: relative;
+            background: #111;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #localVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .controls {
+            display: flex;
+            gap: 10px;
+            padding: 20px 0;
+            flex-wrap: wrap;
+        }
+        .platform-select {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            background: #007AFF;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            min-width: 120px;
+        }
+        button.platform-btn {
+            background: #333;
+        }
+        button.platform-btn.active {
+            background: #007AFF;
+        }
+        button:disabled {
+            background: #666;
+        }
+        .stats {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .platform-info {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.5);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .danmu-container {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .danmu {
+            position: absolute;
+            white-space: nowrap;
+            color: #fff;
+            font-size: 24px;
+            text-shadow: 1px 1px 2px #000;
+            animation: danmuMove 8s linear;
+        }
+        @keyframes danmuMove {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="video-container">
+            <video id="localVideo" autoplay muted playsinline></video>
+            <div class="stats" id="stats"></div>
+            <div class="platform-info" id="platformInfo"></div>
+            <div class="danmu-container" id="danmuContainer"></div>
+        </div>
+        <div class="controls">
+            <div class="platform-select">
+                <button id="xiaohongshuBtn" class="platform-btn active">小红书直播</button>
+                <button id="bilibiliBtn" class="platform-btn">B站直播</button>
+            </div>
+            <button id="startBtn">开始直播</button>
+            <button id="stopBtn" disabled>结束直播</button>
+            <button id="switchCameraBtn">切换摄像头</button>
+        </div>
+    </div>
+    <script src="config.js"></script>
+    <script src="live.js"></script>
+</body>
+</html>
