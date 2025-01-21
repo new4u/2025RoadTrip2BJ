@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深圳到北京路线规划</title>
+    <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css"/>
+    <style>
+        #container {
+            width: 100%;
+            height: 800px;
+        }
+        #panel {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 380px;
+            height: calc(100% - 20px);
+            background: white;
+            padding: 10px;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .service-area {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .service-area h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .service-area .info {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .facilities {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .facility {
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+            color: #555;
+        }
+        .facility i {
+            margin-right: 5px;
+            color: #2196F3;
+        }
+        .charging-status {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            padding: 8px;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-available {
+            background: #4CAF50;
+        }
+        .status-busy {
+            background: #FFC107;
+        }
+        .status-full {
+            background: #F44336;
+        }
+        .distance-tag {
+            font-size: 12px;
+            color: #fff;
+            background: #2196F3;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="panel">
+        <h2>路线信息</h2>
+        <div id="route-info"></div>
+        <h2>服务区信息</h2>
+        <div id="service-areas"></div>
+    </div>
+
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: 'e79f0e20fff84533f266bf08e21eba85'
+        }
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=19b97d8df549c4c68e3c94687018514e&plugin=AMap.Driving"></script>
+    <script>
+        // 初始化地图
+        const map = new AMap.Map('container', {
+            zoom: 6,
+            center: [113.2, 33.4]  // 路线中间点附近
+        });
+
+        // 起点和终点
+        const startPoint = [114.0579, 22.5431];  // 深圳幸福里
+        const endPoint = [116.4074, 39.9042];    // 北京
+
+        // 已知的服务区位置和详细信息
+        const serviceAreas = [
+            {
+                name: "新丰服务区",
+                position: [114.2067, 24.0695],
+                distance: "215公里",
+                info: "设施齐全的服务区，适合早餐和充电",
+                facilities: {
+                    charging: true,
+                    restaurant: true,
+                    parking: true,
+                    restroom: true,
+                    shop: true,
+                    rest: true
+                },
+                chargingStatus: {
+                    total: 12,
+                    available: 5,
+                    price: "¥1.37/度",
+                    providers: ["南方电网", "国家电网"]
+                }
+            },
+            {
+                name: "横市服务区",
+                position: [114.3821, 25.6123],
+                distance: "461.72公里",
+                info: "大型综合服务区，餐饮选择丰富",
+                facilities: {
+                    charging: true,
+                    restaurant: true,
+                    parking: true,
+                    restroom: true,
+                    shop: true,
+                    rest: true,
+                    shower: false,
+                    kfc: true
+                },
+                chargingStatus: {
+                    total: 16,
+                    available: 3,
+                    price: "¥1.43/度",
+                    providers: ["国家电网"]
+                }
+            },
+            {
+                name: "燕厦服务区",
+                position: [114.9821, 27.8234],
+                distance: "863.2公里",
+                info: "五星级服务区，提供完整住宿和洗浴服务",
+                facilities: {
+                    charging: true,
+                    restaurant: true,
+                    parking: true,
+                    restroom: true,
+                    shop: true,
+                    rest: true,
+                    shower: true,
+                    hotel: true
+                },
+                chargingStatus: {
+                    total: 20,
+                    available: 8,
+                    price: "¥1.03-1.08/度",
+                    providers: ["南方电网", "特斯拉", "小鹏", "蔚来"]
+                }
+            },
+            {
+                name: "G45浠水服务区",
+                position: [115.7892, 29.5932],
+                distance: "1019.32公里",
+                info: "交通枢纽服务区，充电价格优惠",
+                facilities: {
+                    charging: true,
+                    restaurant: true,
+                    parking: true,
+                    restroom: true,
+                    shop: true,
+                    rest: true
+                },
+                chargingStatus: {
+                    total: 14,
+                    available: 6,
+                    price: "¥1.03/度",
+                    providers: ["国家电网", "特斯拉"]
+                }
+            },
+            {
+                name: "泗店服务区",
+                position: [114.8976, 31.2789],
+                distance: "1138.8公里",
+                info: "设施完善，提供住宿和洗浴服务",
+                facilities: {
+                    charging: true,
+                    restaurant: true,
+                    parking: true,
+                    restroom: true,
+                    shop: true,
+                    rest: true,
+                    shower: true,
+                    hotel: true
+                },
+                chargingStatus: {
+                    total: 18,
+                    available: 7,
+                    price: "¥1.20/度",
+                    providers: ["国家电网", "特斯拉", "小鹏"]
+                }
+            },
+            {
+                name: "周口东服务区",
+                position: [114.8765, 33.6298],
+                distance: "1382.45公里",
+                info: "现代化服务区，适合午餐和充电",
+                facilities: {
+                    charging: true,
+                    restaurant: true,
+                    parking: true,
+                    restroom: true,
+                    shop: true,
+                    rest: true
+                },
+                chargingStatus: {
+                    total: 16,
+                    available: 4,
+                    price: "¥1.40/度",
+                    providers: ["国家电网", "特斯拉"]
+                }
+            },
+            {
+                name: "衡水服务区",
+                position: [115.6702, 37.7382],
+                distance: "1892公里",
+                info: "五星级服务区，提供高品质洗浴和住宿",
+                facilities: {
+                    charging: true,
+                    restaurant: true,
+                    parking: true,
+                    restroom: true,
+                    shop: true,
+                    rest: true,
+                    shower: true,
+                    hotel: true,
+                    massage: true
+                },
+                chargingStatus: {
+                    total: 24,
+                    available: 10,
+                    price: "¥1.20/度",
+                    providers: ["国家电网", "特斯拉", "小鹏", "蔚来"]
+                }
+            }
+        ];
+
+        // 添加起点和终点标记
+        new AMap.Marker({
+            map: map,
+            position: startPoint,
+            label: {
+                content: '起点：深圳幸福里',
+                direction: 'right'
+            }
+        });
+
+        new AMap.Marker({
+            map: map,
+            position: endPoint,
+            label: {
+                content: '终点：北京',
+                direction: 'right'
+            }
+        });
+
+        // 添加服务区标记和信息
+        serviceAreas.forEach(area => {
+            new AMap.Marker({
+                map: map,
+                position: area.position,
+                label: {
+                    content: area.name,
+                    direction: 'right'
+                }
+            });
+
+            // 获取充电状态样式
+            const getStatusClass = (total, available) => {
+                const ratio = available / total;
+                if (ratio > 0.3) return 'status-available';
+                if (ratio > 0.1) return 'status-busy';
+                return 'status-full';
+            };
+
+            // 生成设施图标
+            const getFacilityIcons = facilities => {
+                let icons = '';
+                if (facilities.charging) icons += '<div class="facility"><i>⚡</i>充电桩</div>';
+                if (facilities.restaurant) icons += '<div class="facility"><i>🍽️</i>餐厅</div>';
+                if (facilities.parking) icons += '<div class="facility"><i>🅿️</i>停车场</div>';
+                if (facilities.restroom) icons += '<div class="facility"><i>🚻</i>卫生间</div>';
+                if (facilities.shop) icons += '<div class="facility"><i>🏪</i>便利店</div>';
+                if (facilities.shower) icons += '<div class="facility"><i>🚿</i>洗浴</div>';
+                if (facilities.hotel) icons += '<div class="facility"><i>🛏️</i>住宿</div>';
+                if (facilities.kfc) icons += '<div class="facility"><i>🍗</i>KFC</div>';
+                if (facilities.massage) icons += '<div class="facility"><i>💆</i>按摩</div>';
+                return icons;
+            };
+
+            const serviceAreaDiv = document.createElement('div');
+            serviceAreaDiv.className = 'service-area';
+            
+            serviceAreaDiv.innerHTML = `
+                <h3>
+                    ${area.name}
+                    <span class="distance-tag">${area.distance}</span>
+                </h3>
+                <div class="info">${area.info}</div>
+                <div class="facilities">
+                    ${getFacilityIcons(area.facilities)}
+                </div>
+                <div class="charging-status">
+                    <span class="status-indicator ${getStatusClass(area.chargingStatus.total, area.chargingStatus.available)}"></span>
+                    <div>
+                        充电桩：${area.chargingStatus.available}/${area.chargingStatus.total}个可用<br>
+                        价格：${area.chargingStatus.price}<br>
+                        支持：${area.chargingStatus.providers.join(', ')}
+                    </div>
+                </div>
+            `;
+            document.getElementById('service-areas').appendChild(serviceAreaDiv);
+        });
+
+        // 规划驾车导航路线
+        const driving = new AMap.Driving({
+            map: map,
+            panel: "route-info"
+        });
+
+        // 添加途经点
+        const waypoints = serviceAreas.map(area => new AMap.LngLat(...area.position));
+
+        // 规划路线
+        driving.search(
+            new AMap.LngLat(...startPoint),
+            new AMap.LngLat(...endPoint),
+            {
+                waypoints: waypoints
+            },
+            function(status, result) {
+                if (status === 'complete') {
+                    console.log('绘制驾车路线完成');
+                } else {
+                    console.error('获取驾车数据失败：' + result);
+                }
+            }
+        );
+    </script>
+</body>
+</html>
